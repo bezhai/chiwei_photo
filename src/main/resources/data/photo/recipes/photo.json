@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass_pane"
+    },
+    "X": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "photo:photo"
+  }
+}

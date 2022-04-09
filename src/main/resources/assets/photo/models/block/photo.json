@@ -1,0 +1,6 @@
+{
+    "parent": "photo:block/template_orientable_photo",
+    "textures": {
+        "texture": "block/oak_log"
+    }
+}

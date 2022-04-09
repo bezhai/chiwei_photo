@@ -1,0 +1,22 @@
+{
+  "block.photo.photo": "相片",
+  "block.photo.grow_block": "生长方块",
+  "text.photo.photo_url": "图片地址",
+  "text.photo.width": "图片宽度",
+  "text.photo.height": "图片高度",
+  "text.photo.x_off": "X偏移量",
+  "text.photo.y_off": "Y偏移量",
+  "text.photo.z_off": "Z偏移量",
+  "block.photo.photo.tooltip": "右键地面看看！",
+  "text.photo.tip": "当前显示图片尺寸为%spx，%spx",
+  "photo.option.position": "图片位置",
+  "photo.option.position.left_bottom": "图片位置：左下",
+  "photo.option.position.left_center": "图片位置：左中",
+  "photo.option.position.left_top": "图片位置：左上",
+  "photo.option.position.center_bottom": "图片位置：中下",
+  "photo.option.position.center": "图片位置：正中",
+  "photo.option.position.center_top": "图片位置：中上",
+  "photo.option.position.right_bottom": "图片位置：右下",
+  "photo.option.position.right_center": "图片位置：右中",
+  "photo.option.position.right_top": "图片位置：右上"
+}

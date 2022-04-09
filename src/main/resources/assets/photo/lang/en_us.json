@@ -1,0 +1,22 @@
+{
+  "block.photo.photo.tooltip": "right-click it!",
+  "block.photo.photo": "Photo",
+  "block.photo.grow_block": "Grow Block",
+  "text.photo.photo_url": "Photo Url",
+  "text.photo.width": "Photo Width",
+  "text.photo.height": "Photo Height",
+  "text.photo.x_off": "X Offset",
+  "text.photo.y_off": "Y Offset",
+  "text.photo.z_off": "Z Offset",
+  "text.photo.tip": "Photo Size is %spx, %spx",
+  "photo.option.position": "Photo Position",
+  "photo.option.position.left_bottom" : "Position: LeftBottom",
+  "photo.option.position.left_center" : "Position: LeftCenter",
+  "photo.option.position.left_top": "Position: LeftTop",
+  "photo.option.position.center_bottom": "Position: CenterBottom",
+  "photo.option.position.center": "Position: Center",
+  "photo.option.position.center_top": "Position: CenterTop",
+  "photo.option.position.right_bottom": "Position: RightBottom",
+  "photo.option.position.right_center": "Position: RightCenter",
+  "photo.option.position.right_top": "Position: RightTop"
+}

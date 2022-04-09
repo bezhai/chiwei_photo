@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.yuanzhi.photo.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "ClientPlayerEntityAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
