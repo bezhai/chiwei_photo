@@ -3,13 +3,12 @@ package xyz.yuanzhi.photo.gui;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.ScreenTexts;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.CyclingButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import xyz.yuanzhi.photo.Photo;
 import xyz.yuanzhi.photo.block.PhotoEntity;
 import xyz.yuanzhi.photo.utils.PictureDownloader;
@@ -21,12 +20,12 @@ import java.util.function.Function;
 @Environment(EnvType.CLIENT)
 public class PhotoScreen extends Screen {
 
-    private static final Text URL_TEXT = new TranslatableText("text.photo.photo_url");
-    private static final Text WIDTH = new TranslatableText("text.photo.width");
-    private static final Text HEIGHT = new TranslatableText("text.photo.height");
-    private static final Text X_OFF = new TranslatableText("text.photo.x_off");
-    private static final Text Y_OFF = new TranslatableText("text.photo.y_off");
-    private static final Text Z_OFF = new TranslatableText("text.photo.z_off");
+    private static final Text URL_TEXT = Text.translatable("text.photo.photo_url");
+    private static final Text WIDTH = Text.translatable("text.photo.width");
+    private static final Text HEIGHT = Text.translatable("text.photo.height");
+    private static final Text X_OFF = Text.translatable("text.photo.x_off");
+    private static final Text Y_OFF = Text.translatable("text.photo.y_off");
+    private static final Text Z_OFF = Text.translatable("text.photo.z_off");
 
     private Text photoSizeTip;
     private final boolean showTip;
@@ -46,12 +45,12 @@ public class PhotoScreen extends Screen {
     private ButtonWidget cancelButton;
 
     public PhotoScreen(PhotoEntity photoEntity) {
-        super(new TranslatableText(Photo.PHOTO_BLOCK.getTranslationKey()));
+        super(Text.translatable(Photo.PHOTO_BLOCK.getTranslationKey()));
         this.photoEntity = photoEntity;
         this.positionType = PhotoPosition.byId(photoEntity.getPositionType());
         PictureDownloader.PictureData pictureData = PictureDownloader.getInstance().getPicture(photoEntity.getUrl());
         if (pictureData != null) {
-            photoSizeTip = new TranslatableText("text.photo.tip", pictureData.width, pictureData.height);
+            photoSizeTip = Text.translatable("text.photo.tip", pictureData.width, pictureData.height);
             showTip = true;
         } else {
             showTip = false;
@@ -73,44 +72,44 @@ public class PhotoScreen extends Screen {
     protected void init() {
         this.client.keyboard.setRepeatEvents(true);
 
-        this.urlTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120, 56, 240, 20, new TranslatableText("text.photo.photo_url"));
+        this.urlTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120, 56, 240, 20, Text.translatable("text.photo.photo_url"));
         this.urlTextField.setMaxLength(3000);
         this.urlTextField.setText(photoEntity.getUrl());
         this.urlTextField.setTextFieldFocused(true);
         this.addSelectableChild(this.urlTextField);
 
-        this.widthTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120, 96 + getYDelta(), 100, 20, new TranslatableText("text.photo.width"));
+        this.widthTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120, 96 + getYDelta(), 100, 20, Text.translatable("text.photo.width"));
         this.widthTextField.setMaxLength(8);
         this.widthTextField.setText(String.valueOf(photoEntity.getWidth()));
         this.addSelectableChild(this.widthTextField);
         this.widthTextField.setChangedListener(this::onFloatChange);
 
-        this.heightTextField = new TextFieldWidget(this.textRenderer, this.width / 2 + 20, 96 + getYDelta(), 100, 20, new TranslatableText("text.photo.height"));
+        this.heightTextField = new TextFieldWidget(this.textRenderer, this.width / 2 + 20, 96 + getYDelta(), 100, 20, Text.translatable("text.photo.height"));
         this.heightTextField.setMaxLength(8);
         this.heightTextField.setText(String.valueOf(photoEntity.getHeight()));
         this.addSelectableChild(this.heightTextField);
         this.heightTextField.setChangedListener(this::onFloatChange);
 
-        this.xTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120, 136 + getYDelta(), 70, 20, new TranslatableText("text.photo.x_off"));
+        this.xTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120, 136 + getYDelta(), 70, 20, Text.translatable("text.photo.x_off"));
         this.xTextField.setMaxLength(8);
         this.xTextField.setText(String.valueOf(photoEntity.getXOffset()));
         this.addSelectableChild(this.xTextField);
         this.xTextField.setChangedListener(this::onFloatChange);
 
-        this.yTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120 + 70 + 15, 136 + getYDelta(), 70, 20, new TranslatableText("text.photo.y_off"));
+        this.yTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120 + 70 + 15, 136 + getYDelta(), 70, 20, Text.translatable("text.photo.y_off"));
         this.yTextField.setMaxLength(8);
         this.yTextField.setText(String.valueOf(photoEntity.getYOffset()));
         this.addSelectableChild(this.yTextField);
         this.yTextField.setChangedListener(this::onFloatChange);
 
-        this.zTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120 + 140 + 30, 136 + getYDelta(), 70, 20, new TranslatableText("text.photo.z_off"));
+        this.zTextField = new TextFieldWidget(this.textRenderer, this.width / 2 - 120 + 140 + 30, 136 + getYDelta(), 70, 20, Text.translatable("text.photo.z_off"));
         this.zTextField.setMaxLength(8);
         this.zTextField.setText(String.valueOf(photoEntity.getZOffset()));
         this.addSelectableChild(this.zTextField);
         this.zTextField.setChangedListener(this::onFloatChange);
 
         this.positionCyclingButtonWidget = this.addDrawableChild(CyclingButtonWidget.builder(PhotoPosition::getTranslationText).values(PhotoPosition.values()).omitKeyText().
-                initially(this.positionType).build(this.width / 2 - 120 - 2, 166+getYDelta(), 80, 20, new TranslatableText("photo.option.position"), (button, positionType) -> {
+                initially(this.positionType).build(this.width / 2 - 120 - 2, 166+getYDelta(), 80, 20, Text.translatable("photo.option.position"), (button, positionType) -> {
                     this.positionType = positionType;
                 }));
 

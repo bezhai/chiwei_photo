@@ -1,6 +1,7 @@
 package xyz.yuanzhi.photo.gui;
 
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.Arrays;
@@ -32,8 +33,8 @@ public enum PhotoPosition {
         return this.id;
     }
 
-    public TranslatableText getTranslationText() {
-        return new TranslatableText(this.translationKey);
+    public MutableText getTranslationText() {
+        return Text.translatable(this.translationKey);
     }
 
     public static PhotoPosition byId(int id) {
